@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Este aplicacion representa a una entidad crediticia la cual
  * concentra todos los creditos otorgados a los clientes de
  * diferentes entidades.
@@ -24,18 +24,18 @@ void doprocessing (int sock)
     
     /* Receive message from client */
     if ((recvMsgSize = recv(sock, buffer, 256, 0)) < 0)
-        perror("ERROR reading to socket");
+        perror("ERROR reading to socket????????");
 
     /* Send received string and receive again until end of transmission */
     while (recvMsgSize > 0)      /* zero indicates end of transmission */
     {
         /* Echo message back to client */
         if (send(sock, buffer, recvMsgSize, 0) != recvMsgSize)
-            perror("ERROR writing to socket");
+            perror("ERROR writing to socket$$$$$$$$");
 
         /* See if there is more data to receive */
         if ((recvMsgSize = recv(sock, buffer, 256, 0)) < 0)
-            perror("ERROR reading to socket");
+            perror("ERROR reading to socket%%%%%%%%%%%");
     }
 
     closesocket(sock);    /* Close client socket */
@@ -74,6 +74,8 @@ int main()
 	 initW32(); /* Necesaria para compilar en Windows */ 
 	 	
    int fd, fd2; /* los descriptores de archivos */
+	char *recv_data;
+	int bytes_recieved;
 
    /* para la información de la dirección del servidor */
    struct sockaddr_in server;
@@ -122,12 +124,13 @@ int main()
          exit(-1);
       }
 
-      printf("Se obtuvo una conexión desde %s\n", inet_ntoa(client.sin_addr) );
+      printf("Se obtuvo una conexion desde %s\n", inet_ntoa(client.sin_addr) );
       /* que mostrará la IP del cliente */
 
-      send(fd2,"Bienvenido a mi servidor.\n",22,0);
+      send(fd2,"Bienvenido a mi servidor.\n",256,0);
       /* que enviará el mensaje de bienvenida al cliente */
-      
+    
+
       doprocessing(fd2);
 
    } /* end while */
