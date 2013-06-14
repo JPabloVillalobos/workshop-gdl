@@ -7,7 +7,6 @@
 
 target
 **/*.class
-credit-bureau
 
 # Ignore IntelliJ Stuff
 .idea/workspace.xml
